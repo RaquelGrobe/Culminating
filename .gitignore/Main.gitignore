@@ -1,0 +1,111 @@
+package com.company;
+import static com.company.ProjConstants.*;
+import java.util.*;
+import java.io.*;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        boolean modechoice = false;
+        boolean inservice = true;
+        boolean service = true;
+        boolean ADMINwhile = false;
+        boolean up;
+        int ADMINchoice = 0;
+        int modeselected = 0;
+        int FloorsRecorded [] = new int[];
+        int direction = 0;
+        int FloorAt = 0;
+
+
+        //scanner for the user to input mode
+        Scanner UserIn = new Scanner(System.in);
+
+       while (inservice){
+           while (!modechoice) {
+               System.out.print("Please select either 1 or 2");
+               System.out.println("\t1) ADMIN");
+               System.out.println("\t2) USER");
+               modeselected = UserIn.nextInt();
+
+               switch (modeselected){
+                   case 1: {
+                       modeselected = ADMIN;
+                       modechoice = true;
+                       break;
+                   }
+                   case 2: {
+                       modeselected = USER;
+                       modechoice = true;
+                       break;
+                   }
+                   default: {
+                       System.out.println("ERROR: PLEASE SELECT ONLY OPTION 1 OR OPTION 2");
+                   }
+               }
+
+           }
+
+           if (modeselected == ADMIN){
+               while (!ADMINwhile) {
+                   System.out.print("Please select in service or out of service");
+                   System.out.println("\t1) In Service");
+                   System.out.println("\t2) Out of Service");
+                   ADMINchoice = UserIn.nextInt();
+
+                   switch (ADMINchoice){
+                       case 1: {
+                           service = true;
+                           ADMINwhile = true;
+                           break;
+                       }
+                       case 2: {
+                           service = false;
+                           ADMINwhile = true;
+                           break;
+                       }
+                       default: {
+                           System.out.println("ERROR: PLEASE SELECT ONLY OPTION 1 OR OPTION 2");
+                       }
+                   }
+
+               }
+               modeselected = USER;
+           }
+
+           if (modeselected == USER){
+               while (service){
+                   ADMINwhile = false;
+                   while (!ADMINwhile) {
+                       System.out.println("Please input up or down");
+                       System.out.println("\t1) Up");
+                       System.out.println("\t2) Down");
+                       direction = UserIn.nextInt();
+
+                       switch (direction){
+                           case 1: {
+                               direction = UP;
+                               ADMINwhile = true;
+                               break;
+                           }
+                           case 2: {
+                               direction = DOWN;
+                               ADMINwhile = true;
+                               break;
+                           }
+                           default: {
+                               System.out.println("ERROR: PLEASE SELECT ONLY OPTION 1 OR OPTION 2");
+                           }
+                       }
+
+                   }
+                   //make an array for the floor numbers, then order it, floor number you are at now, make it go up by one every time and once it equals a floor number it stops and opens
+
+                   System.out.println();
+
+               }
+           }
+       }
+    }
+}
