@@ -1,0 +1,17 @@
+package com.company;
+
+/**
+ * Created by 21328GRO on 15/06/2018.
+ */
+public class Elevator {
+    private int FloorAt = 0;
+
+    public int goUp (int floorUp){
+        FloorAt = floorUp;
+        return floorUp;
+    }
+    public int goDown (int floorDown){
+        FloorAt = floorDown;
+        return floorDown;
+    }
+}
